@@ -28,38 +28,26 @@ Listado.prototype.buscarRestaurante = function (id) {
 
 //Obtiene todas las ciudades de los restaurantes sin repetidos
 Listado.prototype.obtenerUbicaciones = function () {
-    //Array donde se van a ir agregando las ciudades (van a estar repetidas)
-    var c = [];
-    //Se recorre el array de restaurantes y se va agregando al array creado, todas las ubicaciones o ciudades encontradas
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        c.push(this.restaurantes[i].ubicacion);
-    }
-
-    //re factoring
-    return this.eliminarRepetidos(c).sort();
+    //refactoring paso 5 Guia
+    var ubicaciones = this.restaurantes.map(function(restaurante){return restaurante.ubicacion});
+    //re factoring paso 4 Guia
+    return this.eliminarRepetidos(ubicaciones).sort();
 }
 
 //Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtenerUbicaciones()
 Listado.prototype.obtenerRubros = function () {
-    var r = [];
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        r.push(this.restaurantes[i].rubro);
-    }
-
-    //re factoring
-    return this.eliminarRepetidos(r).sort();
+    //refactoring paso 5 Guia
+    var rubros = this.restaurantes.map(function(restaurante){return restaurante.rubro});
+    //re factoring paso 4 Guia
+    return this.eliminarRepetidos(rubros).sort();
 }
 
 //Obtiene todos los horarios de los restaurantes (sin repetidos). Está funcionalidad es un poco más compleja ya que un restaurante
 //tiene un array de horarios. Al buscarlos todos vamos a pasar a tener un array de arrays que luego vamos a tener que 
 //convertir en uno solo
 Listado.prototype.obtenerHorarios = function () {
-    //En este array se van a cargar los arrays de horarios, que luego vamos convertir en un solo array
-    var arregloH = [];
-    //Recorremos el array de restaurantes y vamos agregando todos los array de horarios
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        arregloH.push(this.restaurantes[i].horarios);
-    }
+     //refactoring paso 5 Guia
+     var arregloH = this.restaurantes.map(function(restaurante){return restaurante.horarios});
 
     //En este arreglo vamos a poner todos los horarios, uno por uno
     var h = [];
@@ -69,7 +57,7 @@ Listado.prototype.obtenerHorarios = function () {
         });
     });
 
-    //re factoring
+    //re factoring paso 4 Guia
     return this.eliminarRepetidos(h).sort();
 }
 
@@ -126,7 +114,7 @@ var listadoDeRestaurantes = [
 //Se crea un nuevo listado, asignandole el listado de restaurantes creado anteriormente.
 var listado = new Listado(listadoDeRestaurantes)
 
-//re factoring
+//re factoring paso 4 Guia
 Listado.prototype.eliminarRepetidos = function (valores) {
     var valoresSinRepetidos = valores.filter(function (elem, index, self) {
         return index === self.indexOf(elem);
