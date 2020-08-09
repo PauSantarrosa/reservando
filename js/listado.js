@@ -34,10 +34,7 @@ Listado.prototype.obtenerUbicaciones = function () {
     for (var i = 0; i < this.restaurantes.length; i++) {
         c.push(this.restaurantes[i].ubicacion);
     }
-    //Se crea un nuevo array donde se van a agregar las ciudades pero sin repetirse
-    /*     var c2 = c.filter(function(elem, index, self) {
-            return index === self.indexOf(elem);
-        }); */
+
     //re factoring
     return this.eliminarRepetidos(c).sort();
 }
@@ -49,9 +46,6 @@ Listado.prototype.obtenerRubros = function () {
         r.push(this.restaurantes[i].rubro);
     }
 
-    /*     var r2 = r.filter(function(elem, index, self) {
-            return index === self.indexOf(elem);
-        }); */
     //re factoring
     return this.eliminarRepetidos(r).sort();
 }
@@ -75,10 +69,6 @@ Listado.prototype.obtenerHorarios = function () {
         });
     });
 
-    //En este arreglo vamos a poner todos los horarios pero sin repetidos
-    /* var h2 = h.filter(function(elem, index, self) {
-        return index === self.indexOf(elem);
-    }); */
     //re factoring
     return this.eliminarRepetidos(h).sort();
 }
@@ -135,6 +125,7 @@ var listadoDeRestaurantes = [
 
 //Se crea un nuevo listado, asignandole el listado de restaurantes creado anteriormente.
 var listado = new Listado(listadoDeRestaurantes)
+
 //re factoring
 Listado.prototype.eliminarRepetidos = function (valores) {
     var valoresSinRepetidos = valores.filter(function (elem, index, self) {
