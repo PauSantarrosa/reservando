@@ -22,9 +22,9 @@ describe('Test - Reservar Horario de un Restaurant', function () {
                 expect(restaurantTest.horarios.includes("13:00")).to.equal(true);
                 //cantidad de elementos en el array de horarios antes de la reserva
                 var cantidadHorariosAntesDeReservar = restaurantTest.horarios.length;
-                restaurantTest.reservarHorario("13:00");
-                expect(restaurantTest.horarios.length).to.equal(cantidadHorariosAntesDeReservar - 1);
-                expect(restaurantTest.horarios.includes("13:00")).to.equal(false);
+                var horariosDespuesDeReservar = restaurantTest.reservarHorario("13:00");
+                expect(horariosDespuesDeReservar.length).to.equal(cantidadHorariosAntesDeReservar - 1);
+                expect(horariosDespuesDeReservar.includes("13:00")).to.equal(false);
         })
         it('Cuando se reserva un horario que el restaurant no posee, el arreglo de horarios permanece sin modificaciones', function () {
                 var restaurantTest = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 4, 5]);
