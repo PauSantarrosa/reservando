@@ -567,16 +567,6 @@ describe('Test - Realizar Reserva ', function () {
                 expect(totalAPagar).equal(1680);
                 expect(totalAPagar > 0).to.be.true;
         })
-
-        it('calcular precio Final para reserva con adicionales por dia igual domingo y horario igual a 13 con codigo de Descuento DES15', function () {                                 
-                var reserva1 = new Reserva (new Date(2020, 7, 16, 13, 00), 2, 350, "DES15");                                  
-                expect(reserva1.horario.getDay()).equal(0);
-                var totalAdicionalEnDinero = reserva1.calcularTotalAdicionales();
-                expect(totalAdicionalEnDinero).equal(105);
-                var totalAPagar = reserva1.calcularPrecioTotal();
-                expect(totalAPagar).equal(700);
-                expect(totalAPagar > 0).to.be.true;
-        })
         it('calcular precio Final para reserva con adicionales por dia igual domingo y horario igual a 13', function () {                                 
                 var reserva1 = new Reserva (new Date(2020, 7, 16, 13, 00), 2, 350);                                  
                 expect(reserva1.horario.getDay()).equal(0);
@@ -586,4 +576,14 @@ describe('Test - Realizar Reserva ', function () {
                 expect(totalAPagar).equal(805);
                 expect(totalAPagar > 0).to.be.true;
         })
+        it('calcular precio Final para reserva con adicionales por dia igual domingo y horario igual a 13 con codigo de Descuento DES15', function () {                                 
+                var reserva1 = new Reserva (new Date(2020, 7, 16, 13, 00), 2, 350, "DES15");                                  
+                expect(reserva1.horario.getDay()).equal(0);
+                var totalAdicionalEnDinero = reserva1.calcularTotalAdicionales();
+                expect(totalAdicionalEnDinero).equal(105);
+                var totalAPagar = reserva1.calcularPrecioTotal();
+                expect(totalAPagar).equal(700);
+                expect(totalAPagar > 0).to.be.true;
+        })
+
 })
